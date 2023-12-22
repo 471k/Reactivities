@@ -6,7 +6,7 @@
 appsettings.json
 
 # Notes directory files
-.Notes/
+Notes/
 
 # dotenv files
 .env
