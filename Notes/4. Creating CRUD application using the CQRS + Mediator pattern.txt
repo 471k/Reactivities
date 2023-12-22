@@ -1,0 +1,3 @@
+Creating our first query handler
+-open NuGet Gallery
+-install MediatR into Application.csproj
