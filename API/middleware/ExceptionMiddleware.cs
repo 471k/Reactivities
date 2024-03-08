@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Application.Core;
+using System.Net;
 
 namespace API.middleware
 {
@@ -25,6 +26,10 @@ namespace API.middleware
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
+
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
                 var response = _env.IsDevelopment()
                 ? new AppException(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
                 : new AppException(context.Response.StatusCode, "Internal Server Error");
