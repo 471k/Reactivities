@@ -15,6 +15,7 @@ namespace Persistence
         //Activities -> Represents our table name inside our database when it gets created
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -28,9 +29,9 @@ namespace Persistence
                 .HasForeignKey(aa => aa.AppUserId);
 
             builder.Entity<ActivityAttendee>()
-            .HasOne(u => u.Activity)
-            .WithMany(a => a.Attendees)
-            .HasForeignKey(aa => aa.ActivityId);
+                .HasOne(u => u.Activity)
+                .WithMany(a => a.Attendees)
+                .HasForeignKey(aa => aa.ActivityId);
         }
     }
 }
